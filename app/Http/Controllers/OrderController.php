@@ -13,29 +13,10 @@ class OrderController extends Controller
 
     public function getMenu()
     {
-        $products = Product::with(['defaultAdditions.addition:id,name,type,price'])->get();
+        $products = Product::with('defaultAdditions')->get();
 
-        $formattedProducts = $products->map(function ($product) {
-            $defaultAdditions = $product->defaultAdditions->map(function ($addition) {
-                return [
-                    'id' => $addition->addition->id,
-                    'name' => $addition->addition->name,
-                    'type' => $addition->addition->type,
-                    'price' => $addition->addition->price,
-                ];
-            });
-            return [
-                'id' => $product->id,
-                'name' => $product->name,
-                'type' => $product->type,
-                'price' => $product->price,
-                'default_additions' => $defaultAdditions,
-            ];
-        });
-
-        return response()->json($formattedProducts);
+        return response()->json($products);
     }
-
 
     public function getProductInfo($product_id)
     {
@@ -84,8 +65,8 @@ class OrderController extends Controller
             // Учет цены товара в общей сумме заказа
             $totalPrice += $item->price;
 
-            if (isset($data['additions_id'])) {
-                $item->additions()->sync($data['additions_id']);
+            if (isset($data['toppings_id'])) {
+                $item->additions()->sync($data['toppings_id']);
             }
         }
 
