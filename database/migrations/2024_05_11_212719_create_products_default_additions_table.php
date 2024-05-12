@@ -20,15 +20,15 @@ return new class extends Migration
         DB::table('products_default_additions')->insert([
             [
                 'product_id' => 3,
-                'addition_id' => 8,
+                'addition_id' => 6,
             ],
             [
                 'product_id' => 4,
-                'addition_id' => 8,
+                'addition_id' => 6,
             ],
             [
                 'product_id' => 5,
-                'addition_id' => 8,
+                'addition_id' => 6,
             ],
             [
                 'product_id' => 5,

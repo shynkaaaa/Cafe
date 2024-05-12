@@ -84,8 +84,8 @@ class OrderController extends Controller
             // Учет цены товара в общей сумме заказа
             $totalPrice += $item->price;
 
-            if (isset($data['toppings_id'])) {
-                $item->additions()->sync($data['toppings_id']);
+            if (isset($data['additions_id'])) {
+                $item->additions()->sync($data['additions_id']);
             }
         }
 

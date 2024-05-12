@@ -59,7 +59,7 @@ return new class extends Migration
             [
                 'name' => 'Моккачино',
                 'type' => 'coffee',
-                'default_price' => 800,
+                'default_price' => 900,
                 'default_size' => 'basic',
                 'description' => 'Напиток, похожий на каппучино, но с добавлением шоколадного сиропа или какао порошка. Моккачино обладает богатым шоколадным вкусом и может быть подан с шоколадной посыпкой или кремом на вершине.',
                 'image_url' => 'https://static.vecteezy.com/system/resources/previews/036/160/719/original/ai-generated-mocha-by-a-combination-of-espresso-steamed-milk-and-chocolate-with-transparent-background-free-png.png'
