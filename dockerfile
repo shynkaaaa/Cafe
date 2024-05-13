@@ -31,10 +31,10 @@ RUN test -e .env || cp .env.example .env
 RUN php artisan key:generate
 
 # Создаем базу данных (если она еще не создана)
-CMD php artisan migrate:install
+RUN php artisan migrate:install
 
 # Запускаем миграции
-CMD php artisan migrate --force
+RUN php artisan migrate --force
 
 # Запускаем приложение
 CMD php artisan serve --port=8000
