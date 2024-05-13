@@ -13,7 +13,7 @@ class OrderController extends Controller
 
     public function getMenu()
     {
-        $products = Product::with('defaultAdditions')->get();
+        $products = Product::with(['defaultAdditions:id,name,type,price'])->get();
 
         return response()->json($products);
     }
@@ -45,9 +45,6 @@ class OrderController extends Controller
             $item->product_id = $data['product_id'];
 
             switch ($data['size']) {
-                case 'basic':
-                    $sizeP = 0;
-                    break;
                 case 'medium':
                     $sizeP = 50;
                     break;
@@ -55,7 +52,7 @@ class OrderController extends Controller
                     $sizeP = 100;
                     break;
                 default:
-                    $priceMultiplier = 0;
+                    $sizeP = 0;
             }
             $item->price = $data['price'] + $sizeP;
             $item->size = $data['size'];
